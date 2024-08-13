@@ -1,6 +1,8 @@
 import passport from 'passport';
 import { Strategy as GitHubStrategy } from 'passport-github2';
+
 import env from '../config/env.js';
+import GitHubIntegration from '../models/githubintegration.model.js';
 
 export default function () {
     const init = () => {
@@ -12,7 +14,22 @@ export default function () {
             clientSecret: env.GITHUB_CLIENT_SECRET,
             callbackURL: `${env.APP_URL}/auth/github/callback`
         }, async (accessToken, refreshToken, profile, done) => {
-           console.log({accessToken, profile});
+            try {
+                const { id, username, displayName } = profile;
+                const user = await GitHubIntegration.findOneAndUpdate(
+                    { githubId: id },
+                    {
+                        username,
+                        accessToken,
+                        displayName,
+                        profileUrl: profile.profileUrl,
+                    },
+                    { new: true, upsert: true }
+                );
+                return done(null, user);
+            } catch (error) {
+                return done(error);
+            }
         }));
 
         passport.serializeUser((user, done) => done(null, user));

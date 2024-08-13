@@ -3,11 +3,16 @@ import passport from 'passport';
 
 const router = express.Router();
 
-router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
+const providers = [{ name: 'github', scope: ['user:email'] }]
 
-router.get('/github/callback',
-    passport.authenticate('github', { failureRedirect: '/' }),
-    (req, res) => res.redirect(process.env.FRONTEND_APP_URL)
-);
+providers.map((p) => {
+    router.get(`/${p.name}`, passport.authenticate(`${p.name}`, { scope: p.scope }));
+
+    router.get(`/${p.name}/callback`,
+        passport.authenticate(`${p.name}`, { failureRedirect: '/' }),
+        (req, res) => res.redirect(process.env.FRONTEND_APP_URL)
+    );
+})
+
 
 export default router;
