@@ -1,0 +1,33 @@
+::ng-deep {
+  .mat-expansion-panel-header-title {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .success-icon {
+    color: #2ebd4f;
+  }
+
+  .mat-expansion-panel-header-description {
+    flex-grow: 1 !important;
+    flex-direction: column;
+    align-items: end !important;
+  }
+
+  .mat-expansion-panel-body {
+    display: block;
+  }
+
+  .mat-expansion-panel-body p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-top: 1rem !important;
+
+    color: #673ab7;
+  }
+}
+
+p {
+  margin: 0;
+}

@@ -1,5 +1,7 @@
 import express from 'express';
+
 import { RESPONSE } from '../constants/global.js';
+import GitHubIntegration from '../models/githubintegration.model.js';
 
 const router = express.Router();
 
@@ -8,7 +10,7 @@ router.get('/', async (req, res) => {
         const records = await GitHubIntegration.find({});
         res.json({ status: RESPONSE.SUCCESS, data: records });
     } catch (error) {
-        res.status(500).json({ status: RESPONSE.ERROR, message: 'Error retrieving records', error });
+        res.status(500).json({ status: RESPONSE.ERROR, message: error?.message ?? 'Error retrieving records', error });
     }
 });
 

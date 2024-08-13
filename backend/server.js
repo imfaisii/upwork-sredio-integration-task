@@ -31,7 +31,7 @@ dbInit();
 
 // routes
 app.use('/auth', AuthRoutes)
-app.use('/integrations', IntegrationRoutes)
+app.use('/api/integrations', IntegrationRoutes)
 
 app.listen(PORT, () => {
     console.log(`Listening:: http://localhost:${PORT} 🚀`);

@@ -1,0 +1,35 @@
+<mat-accordion>
+    <mat-expansion-panel [hideToggle]="false">
+        <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
+            <mat-panel-title>
+                <fa-icon [icon]="faGithub" size="2x"></fa-icon>
+                <span>Github</span>
+
+                <fa-icon *ngIf="githubIntegration" [icon]="faCheckCircle" size="1x" class="success-icon"></fa-icon>
+            </mat-panel-title>
+
+            <mat-panel-description *ngIf="githubIntegration">
+                <a *ngIf="githubIntegration" href="{{ githubIntegration.profileUrl }}" target="_blank"
+                    title="Open Profile in new Tab">
+                    <p>{{ githubIntegration.username }} ({{ githubIntegration.githubId }}) Last synced:
+                        {{ githubIntegration.created_at_formatted }}
+                    </p>
+                </a>
+
+                <p>Sync Type: Full</p>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <ng-container *ngIf="githubIntegration; else connectButton">
+            <button mat-raised-button color="warn" (click)="handleRemoveIntegrations()"><mat-icon>delete</mat-icon>
+                Remove</button>
+        </ng-container>
+
+        <ng-template #connectButton>
+            <a href="{{ connectionUrl }}" mat-raised-button color="primary"><mat-icon>link</mat-icon>
+                Connect
+            </a>
+            <p>Connect Sredio to Github</p>
+        </ng-template>
+    </mat-expansion-panel>
+</mat-accordion>
