@@ -1,7 +1,7 @@
 import GitHubIntegration from "../models/githubintegration.model.js"
 
-export default function githubIntegration() {
-    const storeIntegration = async (data) => {
+export default function () {
+    const storeIntegration = async (data, accessToken) => {
         try {
             const { id, username, displayName } = data;
 
@@ -11,7 +11,7 @@ export default function githubIntegration() {
                     username,
                     accessToken,
                     displayName,
-                    profileUrl: profile.profileUrl,
+                    profileUrl: data.profileUrl,
                 },
                 { new: true, upsert: true }
             );

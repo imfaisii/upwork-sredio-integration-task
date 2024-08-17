@@ -3,7 +3,7 @@ import passport from 'passport';
 
 const router = express.Router();
 
-const providers = [{ name: 'github', scope: ['user:email'] }]
+const providers = [{ name: 'github', scope: ['repo', 'admin:repo_hook', 'admin:org', 'user'] }]
 
 providers.map((p) => {
     router.get(`/${p.name}`, passport.authenticate(p.name, { scope: p.scope }));
