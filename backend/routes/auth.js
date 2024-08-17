@@ -6,7 +6,7 @@ const router = express.Router();
 const providers = [{ name: 'github', scope: ['user:email'] }]
 
 providers.map((p) => {
-    router.get(`/${p.name}`, passport.authenticate(`${p.name}`, { scope: p.scope }));
+    router.get(`/${p.name}`, passport.authenticate(p.name, { scope: p.scope }));
 
     router.get(`/${p.name}/callback`,
         passport.authenticate(`${p.name}`, { failureRedirect: '/' }),
