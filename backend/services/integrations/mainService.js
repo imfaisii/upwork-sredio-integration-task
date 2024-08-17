@@ -1,6 +1,6 @@
 import GitHubIntegration from "../../models/githubintegration.model.js"
 
-export default function integrationMainService() {
+export default function mainService() {
     const getAllIntegrations = async () => {
         try {
             return await GitHubIntegration.find({})
