@@ -6,11 +6,13 @@ const router = express.Router();
 
 router.get('/repositories', async (req, res) => {
     try {
-        const { fetchAuthenticatedUserRepos } = GithubRepositories();
+        const { fetchAndStoreAuthenticatedUserRepos, getRepositories } = GithubRepositories();
 
-        await fetchAuthenticatedUserRepos();
+        await fetchAndStoreAuthenticatedUserRepos();
 
-        res.status(200).json({ status: RESPONSE.SUCCESS, data: [] });
+        const repositories = await getRepositories();
+
+        res.status(200).json({ status: RESPONSE.SUCCESS, data: repositories });
     } catch (error) {
         res.status(500).json({ status: RESPONSE.ERROR, message: 'Error getting github repositories', errorMessage: error?.message ?? 'No message' });
     }
