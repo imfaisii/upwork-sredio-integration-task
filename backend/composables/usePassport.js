@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy as GitHubStrategy } from 'passport-github2';
 
 import env from '../config/env.js';
-import GitHubIntegration from '../models/githubintegration.model.js';
+import GithubIntegrationService from "../services/githubIntegration.js";
 
 export default function () {
     const init = () => {
@@ -15,17 +15,10 @@ export default function () {
             callbackURL: `${env.APP_URL}/auth/github/callback`
         }, async (accessToken, refreshToken, profile, done) => {
             try {
-                const { id, username, displayName } = profile;
-                const user = await GitHubIntegration.findOneAndUpdate(
-                    { githubId: id },
-                    {
-                        username,
-                        accessToken,
-                        displayName,
-                        profileUrl: profile.profileUrl,
-                    },
-                    { new: true, upsert: true }
-                );
+                const { storeIntegration } = GithubIntegrationService();
+
+                const user = await storeIntegration(profile, accessToken);
+
                 return done(null, user);
             } catch (error) {
                 return done(error);

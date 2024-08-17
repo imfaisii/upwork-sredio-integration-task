@@ -1,10 +1,10 @@
 
 import { RESPONSE } from '../constants/global.js';
-import integrationMainService from '../services/integrations/mainService.js';
+import GithubIntegrationService from '../services/githubIntegration.js';
 
 export const index = async (req, res) => {
     try {
-        const { getAllIntegrations } = integrationMainService();
+        const { getAllIntegrations } = GithubIntegrationService();
 
         const records = await getAllIntegrations();
 
@@ -16,7 +16,7 @@ export const index = async (req, res) => {
 
 export const destroy = async (req, res) => {
     try {
-        const { deleteAllIntegrations } = integrationMainService();
+        const { deleteAllIntegrations } = GithubIntegrationService();
 
         await deleteAllIntegrations();
 

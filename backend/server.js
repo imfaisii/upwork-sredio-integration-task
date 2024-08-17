@@ -3,7 +3,8 @@ import cors from 'cors';
 import session from 'express-session';
 
 import AuthRoutes from "./routes/auth.js";
-import IntegrationRoutes from "./routes/integrations.js";
+import IntegrationRoutes from "./routes/integration.js";
+import GithubRoutes from "./routes/github.js";
 
 import useDBClient from './composables/useDBClient.js';
 import usePassport from './composables/usePassport.js';
@@ -30,8 +31,9 @@ const { init: dbInit } = useDBClient();
 dbInit();
 
 // routes
-app.use('/auth', AuthRoutes)
-app.use('/api/integrations', IntegrationRoutes)
+app.use('/auth', AuthRoutes);
+app.use('/api/integrations', IntegrationRoutes);
+app.use('/api/integrations/github', GithubRoutes);
 
 app.listen(PORT, () => {
     console.log(`Listening:: http://localhost:${PORT} 🚀`);
