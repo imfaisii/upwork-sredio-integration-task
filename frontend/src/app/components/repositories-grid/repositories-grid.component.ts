@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
 import { map, Observable, of } from 'rxjs';
+import { LinkRendererComponent } from '../link-renderer/link-renderer.component';
+import { MaterialCheckboxRendererComponent } from '../material-checkbox-renderer/material-checkbox-renderer.component';
 
 @Component({
   selector: 'repositories-grid',
@@ -28,7 +30,7 @@ export class RepositoriesGridComponent {
       field: 'htmlUrl',
       sortable: true,
       filter: true,
-      // cellRenderer: LinkRendererComponent,
+      cellRenderer: LinkRendererComponent,
     },
     {
       headerName: 'Slug',
@@ -39,7 +41,7 @@ export class RepositoriesGridComponent {
     {
       headerName: 'Included',
       field: 'included',
-      // cellRenderer: MaterialCheckboxRendererComponent,
+      cellRenderer: MaterialCheckboxRendererComponent,
     },
   ];
 

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 import { faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-integration-expansion-panel',
+  selector: 'integration-expansion-panel',
   templateUrl: './integration-expansion-panel.component.html',
   styleUrls: ['./integration-expansion-panel.component.scss'],
 })

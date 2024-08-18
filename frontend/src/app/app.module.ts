@@ -18,9 +18,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { RepositoriesGridComponent } from './components/repositories-grid/repositories-grid.component';
+import { LinkRendererComponent } from './components/link-renderer/link-renderer.component';
+import { MaterialCheckboxRendererComponent } from './components/material-checkbox-renderer/material-checkbox-renderer.component';
 
 @NgModule({
-  declarations: [AppComponent, IntegrationExpansionPanelComponent, RepositoriesGridComponent],
+  declarations: [AppComponent, IntegrationExpansionPanelComponent, RepositoriesGridComponent, LinkRendererComponent, MaterialCheckboxRendererComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
