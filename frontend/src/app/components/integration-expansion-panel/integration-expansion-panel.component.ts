@@ -21,7 +21,7 @@ export class IntegrationExpansionPanelComponent implements OnInit {
   faLink = faLink as IconProp;
   githubIntegration: null | GithubIntegration = null;
 
-  connectionUrl = `${environment.domain}/auth/github`;
+  connectionUrl = `${environment.domain}/auth/github?prompt=login`;
 
   constructor(private integrationService: IntegrationService) {}
 
@@ -51,6 +51,6 @@ export class IntegrationExpansionPanelComponent implements OnInit {
 
   reconnectGithub(event: MouseEvent): void {
     event.stopPropagation();
-    window.location.href = `${environment.domain}/auth/github`;
+    window.location.href = this.connectionUrl;
   }
 }
