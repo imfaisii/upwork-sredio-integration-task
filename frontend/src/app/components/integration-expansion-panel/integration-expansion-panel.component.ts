@@ -35,7 +35,7 @@ export class IntegrationExpansionPanelComponent implements OnInit {
 
       this.githubIntegration = {
         ...githubIntegration,
-        created_at_formatted: moment(githubIntegration.createdAt).format(
+        updated_at_formatted: moment(githubIntegration.updatedAt).format(
           'YYYY-MM-DD hh:mm A'
         ),
       };

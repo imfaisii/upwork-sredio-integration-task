@@ -1,12 +1,12 @@
 import express from 'express';
-import GithubRepositories from '../services/githubRepositories.js';
+import GithubRepositoriesService from '../services/githubRepositories.service.js';
 import { RESPONSE } from '../constants/global.js';
 
 const router = express.Router();
 
 router.get('/repositories', async (req, res) => {
     try {
-        const { fetchAndStoreAuthenticatedUserRepos, getRepositories } = GithubRepositories();
+        const { fetchAndStoreAuthenticatedUserRepos, getRepositories } = GithubRepositoriesService();
 
         await fetchAndStoreAuthenticatedUserRepos();
 

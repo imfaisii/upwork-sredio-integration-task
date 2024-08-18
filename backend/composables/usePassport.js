@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy as GitHubStrategy } from 'passport-github2';
 
 import env from '../config/env.js';
-import GithubIntegrationService from "../services/githubIntegration.js";
+import GithubIntegrationService from '../services/githubIntegration.service.js';
 
 export default function () {
     const init = () => {

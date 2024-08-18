@@ -1,4 +1,5 @@
 import GitHubIntegration from "../models/githubintegration.model.js"
+import GithubRepositoriesService from "./githubRepositories.service.js";
 
 export default function () {
     const storeIntegration = async (data, accessToken) => {
@@ -26,7 +27,9 @@ export default function () {
 
     const deleteAllIntegrations = async () => {
         try {
-            return await GitHubIntegration.deleteMany({})
+            const { deleteAllRepostories } = GithubRepositoriesService();
+
+            return Promise.all([GitHubIntegration.deleteMany({}), deleteAllRepostories()]);
         } catch (e) { throw e }
     }
 

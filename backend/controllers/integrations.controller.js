@@ -1,6 +1,6 @@
 
 import { RESPONSE } from '../constants/global.js';
-import GithubIntegrationService from '../services/githubIntegration.js';
+import GithubIntegrationService from '../services/githubIntegration.service.js';
 
 export const index = async (req, res) => {
     try {

@@ -13,6 +13,12 @@ export default function () {
         } catch (e) { throw e }
     }
 
+    const deleteAllRepostories = async () => {
+        try {
+            return await GithubRepositories.deleteMany({});
+        } catch (e) { throw e }
+    }
+
     const storeRepository = async (repository) => {
         try {
             const { githubId } = await GitHubIntegration.findOne({});
@@ -82,6 +88,7 @@ export default function () {
         fetchOrganizationRepos,
 
         storeRepository,
-        getRepositories
+        getRepositories,
+        deleteAllRepostories
     }
 }
