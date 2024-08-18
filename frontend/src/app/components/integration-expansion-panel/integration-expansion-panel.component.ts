@@ -8,7 +8,7 @@ import { IntegrationService } from '../../services/integration.service';
 
 import { GithubIntegration } from 'src/app/types';
 import { environment } from 'src/environments/environment';
-import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-integration-expansion-panel',
@@ -18,10 +18,10 @@ import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 export class IntegrationExpansionPanelComponent implements OnInit {
   faGithub = faGithub as IconProp;
   faCheckCircle = faCheckCircle as IconProp;
+  faLink = faLink as IconProp;
+  githubIntegration: null | GithubIntegration = null;
 
   connectionUrl = `${environment.domain}/auth/github`;
-
-  githubIntegration: null | GithubIntegration = null;
 
   constructor(private integrationService: IntegrationService) {}
 
@@ -47,5 +47,10 @@ export class IntegrationExpansionPanelComponent implements OnInit {
       next: (response) => (this.githubIntegration = null),
       error: (error) => console.error('Error removing integration:', error),
     });
+  }
+
+  reconnectGithub(event: MouseEvent): void {
+    event.stopPropagation();
+    window.location.href = `${environment.domain}/auth/github`;
   }
 }

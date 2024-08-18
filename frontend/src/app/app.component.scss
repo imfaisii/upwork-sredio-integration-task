@@ -1,8 +1,14 @@
 .main-content {
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  height: 100%;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1rem;
+}
+
+::ng-deep {
+  .ag-theme-material .ag-header-cell-label {
+    justify-content: center;
+  }
+
+  .ag-header-row {
+    background-color: #eeeeee;
+  }
 }

@@ -1,7 +1,17 @@
 ::ng-deep {
+  .mat-expansion-panel-header-description {
+    gap: 0.25rem;
+  }
+
   .mat-expansion-panel-header-title {
     display: flex;
     gap: 1rem;
+
+    .icons {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
   }
 
   .success-icon {
@@ -15,15 +25,27 @@
   }
 
   .mat-expansion-panel-body {
+    padding: 0 !important;
     display: block;
-  }
 
-  .mat-expansion-panel-body p {
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    margin-top: 1rem !important;
+    .remove-button {
+      padding-right: 1.5rem;
+      text-align: end;
+    }
 
-    color: #673ab7;
+    .connect-button {
+      padding: 1.5rem;
+      gap: 0.625rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.125rem;
+      margin-top: 1rem !important;
+
+      color: #673ab7;
+
+      p {
+        margin-top: 1rem;
+      }
+    }
   }
 }

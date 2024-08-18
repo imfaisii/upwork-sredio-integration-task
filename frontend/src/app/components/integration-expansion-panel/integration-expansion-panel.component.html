@@ -2,10 +2,15 @@
     <mat-expansion-panel [hideToggle]="false">
         <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
             <mat-panel-title>
-                <fa-icon [icon]="faGithub" size="2x"></fa-icon>
+                <fa-icon [icon]="faGithub" size="2x" />
                 <span>Github</span>
 
-                <fa-icon *ngIf="githubIntegration" [icon]="faCheckCircle" size="1x" class="success-icon"></fa-icon>
+                <div class="icons">
+                    <fa-icon title="Successfully synced" *ngIf="githubIntegration" [icon]="faCheckCircle" size="lg"
+                        class="success-icon" />
+                    <fa-icon title="Reconnect" *ngIf="githubIntegration" (click)="reconnectGithub($event)"
+                        [icon]="faLink" size="lg" />
+                </div>
             </mat-panel-title>
 
             <mat-panel-description *ngIf="githubIntegration">
@@ -21,18 +26,21 @@
         </mat-expansion-panel-header>
 
         <ng-container *ngIf="githubIntegration; else connectButton">
-            <button mat-raised-button color="warn" (click)="handleRemoveIntegrations()"><mat-icon>delete</mat-icon>
-                Remove</button>
+            <div class="remove-button">
+                <button mat-raised-button color="warn" (click)="handleRemoveIntegrations()"><mat-icon>delete</mat-icon>
+                    Remove</button>
+            </div>
         </ng-container>
 
         <ng-template #connectButton>
-            <a href="{{ connectionUrl }}" mat-raised-button color="primary"><mat-icon>link</mat-icon>
-                Connect
-            </a>
-            <p>Connect Sredio to Github</p>
+            <div class="connect-button">
+                <a href="{{ connectionUrl }}" mat-raised-button color="primary"><mat-icon>link</mat-icon>
+                    Connect
+                </a>
+                <p>Connect Sredio to Github</p>
+            </div>
         </ng-template>
 
-        <repositories-grid />
+        <repositories-grid *ngIf="githubIntegration;" />
     </mat-expansion-panel>
-
 </mat-accordion>
