@@ -1,4 +1,5 @@
 <mat-accordion>
+    <!-- Github Panel -->
     <mat-expansion-panel [hideToggle]="false">
         <mat-expansion-panel-header [collapsedHeight]="'5rem'" [expandedHeight]="'5rem'">
             <mat-panel-title>
@@ -6,16 +7,17 @@
                 <span>Github</span>
 
                 <div class="icons">
-                    <fa-icon title="Successfully synced" *ngIf="githubIntegration" [icon]="faCheckCircle" size="lg"
-                        class="success-icon" />
-                    <fa-icon title="Reconnect" *ngIf="githubIntegration" (click)="reconnectGithub($event)"
+                    <fa-icon matTooltip="Lasy sync was completed successfully"
+                        *ngIf="githubIntegration" [icon]="faCheckCircle" size="lg" class="success-icon" />
+                    <fa-icon *ngIf="githubIntegration"
+                        matTooltip="Resync your account for latest updates" (click)="reconnectGithub($event)"
                         [icon]="faLink" size="lg" />
                 </div>
             </mat-panel-title>
 
             <mat-panel-description *ngIf="githubIntegration">
                 <a *ngIf="githubIntegration" href="{{ githubIntegration.profileUrl }}" target="_blank"
-                    title="Open Profile in new Tab">
+                    matTooltip="Open Profile in new Tab">
                     <p>{{ githubIntegration.username }} ({{ githubIntegration.githubId }}) Last synced:
                         {{ githubIntegration.updated_at_formatted }}
                     </p>
@@ -27,14 +29,16 @@
 
         <ng-container *ngIf="githubIntegration; else connectButton">
             <div class="remove-button">
-                <button mat-raised-button color="warn" (click)="handleRemoveIntegrations()"><mat-icon>delete</mat-icon>
+                <button mat-raised-button matTooltip="This will completely remove all sync data from our server"
+                    color="warn" (click)="handleRemoveIntegrations()"><mat-icon>delete</mat-icon>
                     Remove</button>
             </div>
         </ng-container>
 
         <ng-template #connectButton>
             <div class="connect-button">
-                <a href="{{ connectionUrl }}" mat-raised-button color="primary"><mat-icon>link</mat-icon>
+                <a matTooltip="You will be redirected to github, to show organization and its repositories you must grant permissions from organizations section."
+                    href="{{ connectionUrl }}" mat-raised-button color="primary"><mat-icon>link</mat-icon>
                     Connect
                 </a>
                 <p>Connect Sredio to Github</p>
