@@ -1,26 +1,34 @@
 <div class="first-ag-table">
     <div class="header">
-        <div class="header-container">
-            <div class="heading">
-                <p matTooltip="Below is the list of all the repositories from granted organizations">Github Projects</p>
-                <mat-icon>download</mat-icon>
-            </div>
-            <p class="description">Specify which projects we should pull from when synchronizing data into Sredio.
-            </p>
+        <div class="alert alert-info alert-icon">
+            If you are not able to see the organization, make sure you have atleast <strong>1</strong>
+            repository in that organization and there are no restrictions applied
+            <strong>Organization > Settings > OAuth Application policy</strong>
         </div>
 
-        <!-- <button mat-raised-button color="primary" (click)="fetchGithubProjects()" [disabled]="loading">
-            <ng-container *ngIf="!loading; else loadingTemplate">Fetch Statistic(s)</ng-container>
-            <ng-template #loadingTemplate>
-                <mat-progress-spinner [diameter]="20" mode="indeterminate"></mat-progress-spinner>
-            </ng-template>
-        </button> -->
+        <div class="header-container">
+            <div>
+                <div class="heading">
+                    <p matTooltip="Below is the list of all the repositories from granted organizations">Github Projects
+                    </p>
+                    <mat-icon>download</mat-icon>
+                </div>
+                <p class="description">Specify which projects we should pull from when synchronizing data into Sredio.
+                </p>
+            </div>
+
+            <button mat-raised-button color="primary" (click)="fetchGithubProjects()" [disabled]="loading">
+                <ng-container *ngIf="!loading; else loadingTemplate">Fetch Statistic(s)</ng-container>
+                <ng-template #loadingTemplate>
+                    <mat-progress-spinner [diameter]="20" mode="indeterminate" />
+                </ng-template>
+            </button>
+        </div>
     </div>
 
     <div class="table">
         <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material" [rowData]="rowData$ | async"
             [columnDefs]="columnDefs" [domLayout]="'autoHeight'" [defaultColDef]="{ flex: 1, minWidth: 100 }"
-            [animateRows]="true">
-        </ag-grid-angular>
+            [animateRows]="true" />
     </div>
 </div>

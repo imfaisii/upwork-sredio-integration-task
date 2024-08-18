@@ -4,7 +4,7 @@ import GithubIntegrationService from '../services/githubIntegration.service.js';
 
 export const index = async (req, res) => {
     try {
-        const { getAllIntegrations } = GithubIntegrationService();
+        const { index: getAllIntegrations } = GithubIntegrationService();
 
         const records = await getAllIntegrations();
 
@@ -16,9 +16,9 @@ export const index = async (req, res) => {
 
 export const destroy = async (req, res) => {
     try {
-        const { deleteAllIntegrations } = GithubIntegrationService();
+        const { destroy } = GithubIntegrationService();
 
-        await deleteAllIntegrations();
+        await destroy();
 
         res.status(200).json({ status: RESPONSE.SUCCESS });
     } catch (error) {

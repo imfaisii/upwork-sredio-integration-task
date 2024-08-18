@@ -1,11 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ICellRendererParams } from 'ag-grid-community';
+import { environment } from 'src/environments/environment';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-material-checkbox-renderer',
   templateUrl: './material-checkbox-renderer.component.html',
 })
 export class MaterialCheckboxRendererComponent {
+  constructor(private http: HttpClient, private notificationService: NotificationService) {}
+
   public params: any;
 
   agInit(params: ICellRendererParams): void {
@@ -16,7 +21,21 @@ export class MaterialCheckboxRendererComponent {
     return true;
   }
 
-  public onChange(event: any) {
-    this.params.data[this.params.colDef.field] = event.checked;
+  public onChange({ checked }: { checked: boolean }) {
+    this.params.data[this.params.colDef.field] = checked;
+
+    const { _id } = this.params.data;
+
+    this.http
+      .post(
+        `${environment.domain}/api/integrations/github/repositories/${_id}/update`,
+        {
+          included: checked,
+        }
+      )
+      .subscribe(
+        (response) => this.notificationService.showMessage("Successfully updated."),
+        (error) => this.notificationService.showMessage("Failed to update.")
+      );
   }
 }

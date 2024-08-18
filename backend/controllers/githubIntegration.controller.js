@@ -26,7 +26,7 @@ export const updateRespository = async (req, res) => {
             return res.status(400).json({ status: 'error', message: 'Repository ID is required' });
         }
 
-        const updatedRepository = await update(id, data)
+        const updatedRepository = await update(id, data);
 
         if (!updatedRepository) {
             return res.status(404).json({ status: 'error', message: 'Repository not found' });

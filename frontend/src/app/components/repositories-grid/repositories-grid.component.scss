@@ -1,17 +1,19 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 1.5rem;
   background-color: #ffffff;
+  gap: 1.5rem;
 
   .header-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     gap: 0.5rem;
 
     .heading {
       display: flex;
       align-items: center;
+      justify-content: start;
       gap: 0.5rem;
       color: rgb(1, 1, 137);
       font-weight: 700;
@@ -19,8 +21,10 @@
     }
 
     .description {
+      text-align: left;
       font-weight: 500;
       color: #888888;
+      margin-top: 0.5rem;
     }
   }
 

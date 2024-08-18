@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 
 import AuthRoutes from "./routes/auth.js";
 import IntegrationRoutes from "./routes/integration.js";
@@ -16,6 +17,8 @@ const app = express();
 
 // middleware(s)
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(session({
     secret: env.GITHUB_CLIENT_SECRET,
     resave: false,

@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/repositories', getRepositories);
 
-router.post('/github/repositories/:id/update', updateRespository);
+router.post('/repositories/:id/update', updateRespository);
 
 export default router;

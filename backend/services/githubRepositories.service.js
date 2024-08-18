@@ -15,7 +15,7 @@ export default function () {
 
     const update = async (_id, data) => {
         try {
-            await GithubRepositories.findOneAndUpdate(
+            return await GithubRepositories.findOneAndUpdate(
                 { _id },
                 { $set: data },
                 { new: true }
@@ -71,7 +71,7 @@ export default function () {
             }
 
             for (const repository of allRepositories) {
-                await storeRepository(repository)
+                await store(repository)
             }
         } catch (e) { throw e }
     }
