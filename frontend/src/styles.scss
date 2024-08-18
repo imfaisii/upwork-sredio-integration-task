@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "ag-grid-community/styles/ag-grid.min.css";
+@import "ag-grid-community/styles/ag-theme-material.min.css";
+
+html,
+body {
+  height: 100%;
+  background-color: #e9e9e9;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+p {
+  margin: 0;
+}

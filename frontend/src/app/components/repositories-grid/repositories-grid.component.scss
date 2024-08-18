@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: #ffffff;
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .heading {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgb(1, 1, 137);
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .description {
+      font-weight: 500;
+      color: #888888;
+    }
+  }
+
+  mat-icon {
+    margin-top: 0.1875rem;
+  }
+}
+
+.second-ag-table {
+  mat-icon {
+    margin-top: 0;
+  }
+}
+
+::ng-deep {
+  .ag-theme-material .ag-header-cell-label {
+    justify-content: center;
+  }
+
+  .ag-header-row {
+    background-color: #eeeeee;
+  }
+}

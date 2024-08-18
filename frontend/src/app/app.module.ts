@@ -9,22 +9,31 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IntegrationExpansionPanelComponent } from './components/integration-expansion-panel/integration-expansion-panel.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AgGridModule } from 'ag-grid-angular';
+
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { RepositoriesGridComponent } from './components/repositories-grid/repositories-grid.component';
 
 @NgModule({
-  declarations: [AppComponent, IntegrationExpansionPanelComponent],
+  declarations: [AppComponent, IntegrationExpansionPanelComponent, RepositoriesGridComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     HttpClientModule,
+    AgGridModule,
     
+    MatCheckboxModule,
     MatExpansionModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
