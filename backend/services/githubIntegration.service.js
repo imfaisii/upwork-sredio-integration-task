@@ -2,7 +2,7 @@ import GitHubIntegration from "../models/githubintegration.model.js"
 import GithubRepositoriesService from "./githubRepositories.service.js";
 
 export default function () {
-    const storeIntegration = async (data, accessToken) => {
+    const store = async (data, accessToken) => {
         try {
             const { id, username, displayName } = data;
 
@@ -19,23 +19,23 @@ export default function () {
         } catch (e) { throw e }
     }
 
-    const getAllIntegrations = async () => {
+    const index = async () => {
         try {
             return await GitHubIntegration.find({})
         } catch (e) { throw e }
     }
 
-    const deleteAllIntegrations = async () => {
+    const destroy = async (_id = null) => {
         try {
-            const { deleteAllRepostories } = GithubRepositoriesService();
+            const { destroy } = GithubRepositoriesService();
 
-            return Promise.all([GitHubIntegration.deleteMany({}), deleteAllRepostories()]);
+            return Promise.all([GitHubIntegration.deleteMany({}), destroy()]);
         } catch (e) { throw e }
     }
 
     return {
-        storeIntegration,
-        getAllIntegrations,
-        deleteAllIntegrations
+        index,
+        store,
+        destroy
     }
 }

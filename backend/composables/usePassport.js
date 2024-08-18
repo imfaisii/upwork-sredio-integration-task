@@ -15,9 +15,9 @@ export default function () {
             callbackURL: `${env.APP_URL}/auth/github/callback`
         }, async (accessToken, refreshToken, profile, done) => {
             try {
-                const { storeIntegration } = GithubIntegrationService();
+                const { store } = GithubIntegrationService();
 
-                const user = await storeIntegration(profile, accessToken);
+                const user = await store(profile, accessToken);
 
                 return done(null, user);
             } catch (error) {

@@ -7,19 +7,31 @@ export default function () {
         'X-GitHub-Api-Version': '2022-11-28'
     }
 
-    const getRepositories = async () => {
+    const index = async () => {
         try {
             return await GithubRepositories.find({});
         } catch (e) { throw e }
     }
 
-    const deleteAllRepostories = async () => {
+    const update = async (_id, data) => {
         try {
-            return await GithubRepositories.deleteMany({});
+            await GithubRepositories.findOneAndUpdate(
+                { _id },
+                { $set: data },
+                { new: true }
+            );
         } catch (e) { throw e }
     }
 
-    const storeRepository = async (repository) => {
+    const destroy = async (_id = null) => {
+        try {
+            if (!_id) return await GithubRepositories.deleteMany({});
+
+            return await GithubRepositories.deleteOne({ _id })
+        } catch (e) { throw e }
+    }
+
+    const store = async (repository) => {
         try {
             const { githubId } = await GitHubIntegration.findOne({});
 
@@ -87,8 +99,9 @@ export default function () {
         fetchOrganizations,
         fetchOrganizationRepos,
 
-        storeRepository,
-        getRepositories,
-        deleteAllRepostories
+        index,
+        store,
+        update,
+        destroy,
     }
 }
