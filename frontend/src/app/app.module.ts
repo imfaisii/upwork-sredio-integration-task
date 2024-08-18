@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { RepositoriesGridComponent } from './components/repositories-grid/repositories-grid.component';
 import { LinkRendererComponent } from './components/link-renderer/link-renderer.component';
@@ -43,6 +44,7 @@ import { MaterialCheckboxRendererComponent } from './components/material-checkbo
     MatExpansionModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
     MatProgressSpinnerModule,
   ],
   providers: [],

@@ -14,5 +14,5 @@ export class IntegrationService {
 
   index = (): Observable<any> => this.http.get<any>(this.apiUrl);
 
-  destroy = (): Observable<any> => this.http.delete(this.apiUrl);
+  destroy = (): Observable<any> => this.http.delete<any>(this.apiUrl);
 }
