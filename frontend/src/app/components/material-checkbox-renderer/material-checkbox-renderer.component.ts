@@ -27,7 +27,7 @@ export class MaterialCheckboxRendererComponent {
     const { _id } = this.params.data;
 
     this.http
-      .post(
+      .put(
         `${environment.domain}/api/integrations/github/repositories/${_id}/update`,
         {
           included: checked,

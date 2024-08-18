@@ -59,6 +59,87 @@ export default function () {
         } catch (e) { throw e }
     }
 
+    const fetchRepositoryStats = async (repository) => {
+        try {
+            const [commits, pulls, issues] = await Promise.all([
+                fetchRepositoryCommits(repository),
+                fetchRepositoryPulls(repository),
+                fetchRepositoryIssues(repository),
+            ]);
+
+            const userActivity = {};
+
+            const processActivity = (user, userId, type) => {
+                if (!user) return;
+                if (!userActivity[user]) {
+                    userActivity[user] = { commits: 0, pulls: 0, issues: 0, id: userId };
+                }
+                userActivity[user][type] += 1;
+            };
+
+            commits.data.forEach(commit => {
+                const user = commit.author?.login;
+                const userId = commit.author?.id;
+                processActivity(user, userId, 'commits');
+            });
+
+            pulls.data.forEach(pull => {
+                const user = pull.user?.login;
+                const userId = pull.user?.id;
+                processActivity(user, userId, 'pulls');
+            });
+
+            issues.data.forEach(issue => {
+                const user = issue.user?.login;
+                const userId = issue.user?.id;
+                if (!issue.pull_request) {
+                    processActivity(user, userId, 'issues');
+                }
+            });
+
+            return Object.entries(userActivity).map(([user, activity]) => ({
+                user,
+                repository,
+                id: activity.id,
+                totalCommits: activity.commits,
+                totalPRs: activity.pulls,
+                totalIssues: activity.issues,
+            }));
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    const fetchRepositoryCommits = async (repository) => {
+        try {
+            const octokit = await useOctoKit();
+
+            return await octokit.request(`GET /repos/${repository}/commits?state=all`, { headers })
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    const fetchRepositoryIssues = async (repository) => {
+        try {
+            const octokit = await useOctoKit();
+
+            return await octokit.request(`GET /repos/${repository}/issues?state=all`, { headers })
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    const fetchRepositoryPulls = async (repository) => {
+        try {
+            const octokit = await useOctoKit();
+
+            return await octokit.request(`GET /repos/${repository}/pulls?state=all`, { headers })
+        } catch (e) {
+            throw e;
+        }
+    }
+
     const fetchAndStoreAuthenticatedUserRepos = async () => {
         try {
             const { data: organizations } = await fetchOrganizations();
@@ -98,6 +179,10 @@ export default function () {
         fetchAndStoreAuthenticatedUserRepos,
         fetchOrganizations,
         fetchOrganizationRepos,
+        fetchRepositoryPulls,
+        fetchRepositoryIssues,
+        fetchRepositoryCommits,
+        fetchRepositoryStats,
 
         index,
         store,
