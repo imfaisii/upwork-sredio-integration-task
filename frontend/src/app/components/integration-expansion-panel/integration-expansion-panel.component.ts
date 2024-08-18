@@ -20,6 +20,7 @@ export class IntegrationExpansionPanelComponent implements OnInit {
   faGithub = faGithub as IconProp;
   faCheckCircle = faCheckCircle as IconProp;
   faLink = faLink as IconProp;
+  
   githubIntegration: null | GithubIntegration = null;
 
   connectionUrl = `${environment.domain}/auth/github?prompt=login`;
