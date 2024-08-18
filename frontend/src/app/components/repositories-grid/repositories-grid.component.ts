@@ -4,6 +4,7 @@ import { ColDef } from 'ag-grid-community';
 import { map, Observable, of } from 'rxjs';
 import { LinkRendererComponent } from '../link-renderer/link-renderer.component';
 import { MaterialCheckboxRendererComponent } from '../material-checkbox-renderer/material-checkbox-renderer.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'repositories-grid',
@@ -11,7 +12,10 @@ import { MaterialCheckboxRendererComponent } from '../material-checkbox-renderer
   styleUrls: ['./repositories-grid.component.scss'],
 })
 export class RepositoriesGridComponent {
+  apiUrl = `${environment.domain}/api/integrations/github/repositories`;
+
   rowData$: Observable<any[]> = of([]);
+
   columnDefs: ColDef[] = [
     {
       headerName: 'ID',
@@ -49,7 +53,7 @@ export class RepositoriesGridComponent {
 
   ngOnInit() {
     this.rowData$ = this.http
-      .get<any[]>('http://localhost:3000/api/integrations/github/repositories')
+      .get<any[]>(this.apiUrl)
       .pipe(map((response: any) => response.data));
   }
 }
