@@ -53,6 +53,14 @@ export class RepositoriesGridComponent {
     },
   ];
 
+  columnDefsRepositories = [
+    { headerName: 'UserID', field: 'id' },
+    { headerName: 'User', field: 'user' },
+    { headerName: 'Total Commits', field: 'totalCommits' },
+    { headerName: 'Total PRs', field: 'totalPRs' },
+    { headerName: 'Total Issues', field: 'totalIssues' },
+  ];
+
   constructor(
     private http: HttpClient,
     private notificationService: NotificationService
@@ -83,5 +91,9 @@ export class RepositoriesGridComponent {
         error: (error) => this.notificationService.showException(error),
         complete: () => (this.loading = false),
       });
+  }
+
+  castValues(value: any): any {
+    return value;
   }
 }

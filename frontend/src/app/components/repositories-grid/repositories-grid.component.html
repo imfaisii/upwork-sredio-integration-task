@@ -32,3 +32,52 @@
             [animateRows]="true" />
     </div>
 </div>
+
+<div class="second-ag-table" *ngIf="statistics">
+    <div class="header">
+        <div class="header-container">
+            <div class="heading">
+                <p>Repository Statistics</p>
+                <mat-icon>format_list_bulleted</mat-icon>
+            </div>
+            <p class="description">
+                Below is the details of PRs, commits and issues by repositories and total.
+            </p>
+        </div>
+    </div>
+
+    <div class="repositories-expansion-panels">
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Overall Statistics
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="body-container">
+                    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material"
+                        [columnDefs]="columnDefsRepositories" [rowData]="castValues(statistics.total)"
+                        [domLayout]="'autoHeight'" [defaultColDef]="{ flex: 1, minWidth: 100 }" [animateRows]="true">
+                    </ag-grid-angular>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngFor="let repoStat of statistics.repository_stats | keyvalue as any">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ repoStat.key }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="body-container">
+                    <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-material"
+                        [columnDefs]="columnDefsRepositories" [rowData]="castValues(repoStat.value)"
+                        [domLayout]="'autoHeight'" [defaultColDef]="{ flex: 1, minWidth: 100 }" [animateRows]="true">
+                    </ag-grid-angular>
+                </div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
