@@ -1,1 +1,19 @@
-<ng-content />
+<button mat-icon-button class="toggle-button" [ngClass]="{'opened': opened, 'closed': !opened}"
+    (click)="toggleSideNav()" [attr.aria-expanded]="opened">
+    <mat-icon>{{ opened ? 'arrow_back_ios' : 'arrow_forward_ios' }}</mat-icon>
+</button>
+
+<div class="vertical-line" [ngClass]="{'hide': opened, 'show': !opened}"></div>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav">
+        <mat-nav-list>
+            <p>Item 1</p>
+        </mat-nav-list>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content>
+        <ng-content />
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -18,6 +18,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 import { RepositoriesGridComponent } from './components/repositories-grid/repositories-grid.component';
 import { LinkRendererComponent } from './components/link-renderer/link-renderer.component';
@@ -43,6 +45,8 @@ import { HomeComponent } from './pages/home/home.component';
     HttpClientModule,
     AgGridModule,
 
+    MatListModule,
+    MatSidenavModule,
     MatTooltipModule,
     MatCheckboxModule,
     MatExpansionModule,
