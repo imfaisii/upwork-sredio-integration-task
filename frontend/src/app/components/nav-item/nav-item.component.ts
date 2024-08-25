@@ -18,8 +18,7 @@ import { filter } from 'rxjs';
       state(
         'collapsed',
         style({
-          height: '0px',
-          overflow: 'hidden',
+          height: '0rem',
           opacity: 0,
         })
       ),
