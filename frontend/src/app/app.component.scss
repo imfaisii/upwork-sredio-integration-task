@@ -1,38 +1,10 @@
-.main-content {
-  text-align: center;
-  padding: 2rem;
-}
+.app-wrapper {
+  height: 100%;
+  width: 100%;
 
-::ng-deep {
-  .ag-theme-material .ag-header-cell-label {
-    justify-content: center;
-  }
-
-  .ag-header-row {
-    background-color: #eeeeee;
-  }
-
-  .alert {
-    position: relative;
-    border: 1px solid transparent;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.25rem;
-  }
-
-  .alert-info {
-    color: #004085;
-    background-color: #cce5ff;
-    border-color: #b8daff;
-  }
-
-  .alert-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-
-    > span {
-      margin-bottom: -0.25rem;
-    }
+  .main-content {
+    text-align: center;
+    padding-block: 2rem;
+    padding-inline: 3rem;
   }
 }
