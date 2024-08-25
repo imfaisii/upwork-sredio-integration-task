@@ -26,6 +26,7 @@ import { LinkRendererComponent } from './components/link-renderer/link-renderer.
 import { MaterialCheckboxRendererComponent } from './components/material-checkbox-renderer/material-checkbox-renderer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NavItemComponent } from './components/nav-item/nav-item.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HomeComponent } from './pages/home/home.component';
     MaterialCheckboxRendererComponent,
     NavbarComponent,
     HomeComponent,
+    NavItemComponent,
   ],
   imports: [
     BrowserModule,

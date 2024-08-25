@@ -8,7 +8,12 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav">
         <mat-nav-list>
-            <p>Item 1</p>
+            <nav-item icon="home" label="Home" routerLink="/" />
+            <nav-item icon="info" label="About" routerLink="/about" />
+            <nav-item icon="menu" label="Menu" [children]="[
+                { icon: 'subdirectory_arrow_right', label: 'Home', routerLink: '/' },
+                { icon: 'subdirectory_arrow_right', label: 'About', routerLink: '/about' }
+              ]" />
         </mat-nav-list>
     </mat-sidenav>
 

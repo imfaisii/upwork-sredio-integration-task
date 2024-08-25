@@ -1,0 +1,14 @@
+<a mat-list-item class="link-container" [routerLink]="routerLink" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }" (click)="toggleExpand()">
+    <span>
+        <mat-icon>{{ icon }}</mat-icon>
+        <label>{{ label }}</label>
+    </span>
+
+    <mat-icon *ngIf="children && children.length > 0">{{ isExpanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+</a>
+
+<div [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'" class="child-nav-items">
+    <nav-item *ngFor="let child of children" [icon]="child.icon" [label]="child.label" [routerLink]="child.routerLink"
+        [children]="child.children" />
+</div>

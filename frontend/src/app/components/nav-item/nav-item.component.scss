@@ -1,0 +1,36 @@
+::ng-deep {
+  .child-nav-items {
+    .link-container {
+      padding-left: 2.5rem;
+    }
+  }
+
+  .link-container {
+    &.active {
+      background-color: #eeeeee;
+    }
+
+    label {
+      cursor: pointer;
+
+      margin-top: 0.125rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .mat-mdc-list-item-unscoped-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      mat-icon {
+        transform: scale(0.8);
+      }
+
+      span {
+        display: flex;
+        gap: 0.625rem;
+      }
+    }
+  }
+}
