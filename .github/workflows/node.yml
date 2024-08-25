@@ -31,7 +31,7 @@ jobs:
             git pull
             npm i
             npm run build
-            cp /home/imfaisii-sredio-task/htdocs/sredio-task.imfaisii.dev/upwork-sredio-integration-task/frontend/dist/frontend/.htaccess /home/imfaisii-sredio-task/htdocs/sredio-task.imfaisii.dev/upwork-sredio-integration-task/frontend/dist/frontend/dist
+            cp /home/imfaisii-sredio-task/htdocs/sredio-task.imfaisii.dev/upwork-sredio-integration-task/frontend/.htaccess /home/imfaisii-sredio-task/htdocs/sredio-task.imfaisii.dev/upwork-sredio-integration-task/frontend/dist
             cd /home/imfaisii-api-sredio-task/htdocs/api-sredio-task.imfaisii.dev/upwork-sredio-integration-task/backend
             git stash
             git pull
