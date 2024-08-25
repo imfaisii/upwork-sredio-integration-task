@@ -8,6 +8,11 @@
   .link-container {
     &.active {
       background-color: #eeeeee;
+
+      mat-icon,
+      label {
+        color: #0c66e4;
+      }
     }
 
     label {
