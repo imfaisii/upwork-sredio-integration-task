@@ -22,6 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RepositoriesGridComponent } from './components/repositories-grid/repositories-grid.component';
 import { LinkRendererComponent } from './components/link-renderer/link-renderer.component';
 import { MaterialCheckboxRendererComponent } from './components/material-checkbox-renderer/material-checkbox-renderer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { MaterialCheckboxRendererComponent } from './components/material-checkbo
     RepositoriesGridComponent,
     LinkRendererComponent,
     MaterialCheckboxRendererComponent,
+    NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
