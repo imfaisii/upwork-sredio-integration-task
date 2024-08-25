@@ -11,6 +11,6 @@ export class HomeComponent {
 
   constructor(router: Router) {
     this.pageName =
-      router.url == '/' ? 'Home' : router.url.replace('/', '').toUpperCase();
+      router.url == '/' ? 'HOME' : router.url.replace('/', '').toUpperCase();
   }
 }
