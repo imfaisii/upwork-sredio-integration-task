@@ -1,5 +1,7 @@
 # SRED.IO Task
 
+[TEST DOMAIN](https://sredio-task.imfaisii.dev/)
+
 This repository contains the backend and frontend setup instructions for the SRED.IO project. The backend is built with Node.js and the frontend with AngularJS. Below are the step-by-step instructions to set up and run the project.
 
 ## Backend Setup (Node.js - Port 3000)
