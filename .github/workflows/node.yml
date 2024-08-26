@@ -30,7 +30,7 @@ jobs:
             git stash
             git pull
             npm i
-            npm run build
+            npm run build --configuration=production
             cp /home/imfaisii-sredio-task/htdocs/sredio-task.imfaisii.dev/upwork-sredio-integration-task/frontend/.htaccess /home/imfaisii-sredio-task/htdocs/sredio-task.imfaisii.dev/upwork-sredio-integration-task/frontend/dist/frontend
             cd /home/imfaisii-api-sredio-task/htdocs/api-sredio-task.imfaisii.dev/upwork-sredio-integration-task/backend
             git stash
