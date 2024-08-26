@@ -1,4 +1,4 @@
-<a mat-list-item class="link-container" [routerLink]="routerLink" routerLinkActive="active"
+<a mat-list-item class="link-container" matTooltip="{{ label }}" [routerLink]="routerLink" routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }" (click)="toggleExpand()">
     <span>
         <mat-icon>{{ icon }}</mat-icon>

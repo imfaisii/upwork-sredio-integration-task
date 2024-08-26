@@ -8,12 +8,31 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="sidenav">
         <mat-nav-list>
-            <nav-item icon="home" label="Home" routerLink="/" />
-            <nav-item icon="info" label="About" routerLink="/about" />
-            <nav-item icon="menu" label="Menu" [children]="[
-                { icon: 'subdirectory_arrow_right', label: 'Home', routerLink: '/' },
-                { icon: 'subdirectory_arrow_right', label: 'About', routerLink: '/about' }
+            <nav-item icon="auto_awesome_mosaic" label="SCMS" [children]="[
+                {icon: 'people', label: 'Clients', routerLink: '/clients'},
+                {icon: 'grid_view', label: 'Claims', routerLink: '/claims'},
+                {icon: 'people_outline', label: 'Claims', routerLink: '/users'},
+                {icon: 'article', label: 'Audit Logs', routerLink: '/audit-logs'},
+            ]" />
+            <nav-item icon="account_balance" label="Financial Dashboard" routerLink="/financial-dashboard" />
+            <nav-item icon="dashboard" label="Main Dashboard" routerLink="/main-dashboard" />
+            <nav-item icon="people" label="Staff" [children]="[
+                { icon: 'person', label: 'Integration Mappings', routerLink: '/integrations' },
               ]" />
+            <nav-item icon="people_outline" label="Platform Users" routerLink="/platform-users" />
+            <nav-item icon="pause" label="Weekly Reports" routerLink="/weekly-reports" />
+            <nav-item icon="workspaces_outline" label="Projects" routerLink="/projects" />
+            <nav-item icon="account_tree" label="Test Crossings" routerLink="/test-crossings" />
+            <nav-item icon="dehaze" label="Time Records" routerLink="/time-records" />
+            <nav-item icon="sync" label="Integrations" [children]="[
+            {icon: 'download', label: 'Setup', routerLink: '/setup'},
+            {icon: 'gavel', label: 'Rules', routerLink: '/rules'},
+            {icon: 'info', label: 'Algorithm Logs', routerLink: '/algorithm-logs'},
+            {icon: 'account_tree', label: 'Diagnostics', routerLink: '/diagnostics'},
+            ]" />
+            <nav-item icon="article" label="Audit Logs" routerLink="/audit-logs" />
+            <nav-item icon="show_chart" label="Time Machine" routerLink="/time-machine" />
+            <nav-item icon="smart_toy" label="Admin Settings" routerLink="/admin-settings" />
         </mat-nav-list>
     </mat-sidenav>
 
