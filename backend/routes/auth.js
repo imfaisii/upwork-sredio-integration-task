@@ -10,7 +10,7 @@ providers.map((p) => {
 
     router.get(`/${p.name}/callback`,
         passport.authenticate(`${p.name}`, { failureRedirect: '/' }),
-        (req, res) => res.redirect(process.env.FRONTEND_APP_URL)
+        (req, res) => res.redirect(`${process.env.FRONTEND_APP_URL}/#/admin-settings`)
     );
 })
 
