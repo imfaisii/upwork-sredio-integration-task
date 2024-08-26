@@ -27,6 +27,7 @@ import { MaterialCheckboxRendererComponent } from './components/material-checkbo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavItemComponent } from './components/nav-item/nav-item.component';
+import { AdminSettingsComponent } from './pages/admin-settings/admin-settings.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NavItemComponent } from './components/nav-item/nav-item.component';
     NavbarComponent,
     HomeComponent,
     NavItemComponent,
+    AdminSettingsComponent,
   ],
   imports: [
     BrowserModule,

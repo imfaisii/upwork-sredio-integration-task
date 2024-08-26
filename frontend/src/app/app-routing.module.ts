@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { AdminSettingsComponent } from './pages/admin-settings/admin-settings.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'algorithm-logs', component: HomeComponent },
   { path: 'diagnostics', component: HomeComponent },
   { path: 'audit-logs', component: HomeComponent },
-  { path: 'admin-settings', component: HomeComponent },
+  { path: 'admin-settings', component: AdminSettingsComponent },
 ];
 
 @NgModule({
